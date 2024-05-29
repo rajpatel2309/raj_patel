@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carso - Know Your Car Price</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #f2f2f2;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: #000;
+            padding: 1em 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1em;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            color: #ffa500;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 2em;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #f2f2f2;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffa500;
+        }
+
+        section {
+            padding: 5em 1em;
+            text-align: center;
+        }
+
+        .home-content {
+            margin-top: 3em;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .about-content, .contact-content {
+            max-width: 800px;
+            margin: 2em auto;
+            animation: fadeInUp 2s ease-in-out;
+        }
+
+        h1, h2 {
+            margin-bottom: 1em;
+            color: #ffa500;
+        }
+
+        p {
+            margin-bottom: 2em;
+        }
+
+        .btn {
+            text-decoration: none;
+            padding: 0.75em 2em;
+            background-color: #ffa500;
+            color: #000;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #cc8400;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            background-color: #000;
+            color: #ffa500;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Carso</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="home-content">
+            <h1>Welcome to Carso</h1>
+            <p>Discover the best prices for second-hand cars.</p>
+            <a href="#know-price" class="btn">Know Your Car Price</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="about-content">
+            <h2>About Carso</h2>
+            <p>Carso helps you find the best deals on second-hand cars. Our platform provides accurate price estimates based on various factors, ensuring you get the best value for your vehicle.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            <p>Have questions or need support? Reach out to us!</p>
+            <a href="/contact-form" class="btn">Contact Us</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Carso. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Add any necessary JavaScript functionality if needed
+    </script>
+</body>
+</html>
