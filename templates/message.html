@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carso - Know Your Car Price</title>
+    <title>Carso - Thank You</title>
     <style>
         /* Basic Reset */
         * {
@@ -66,37 +66,44 @@
             text-align: center;
         }
 
-        .home-content {
-            margin-top: 3em;
-            animation: fadeIn 2s ease-in-out;
-        }
-
-        .about-content, .contact-content {
-            max-width: 800px;
-            margin: 2em auto;
+        .thank-you-content {
+            max-width: 600px;
+            margin: 5em auto 3em;
+            background-color: #2a2a2a;
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             animation: fadeInUp 2s ease-in-out;
         }
 
-        h1, h2 {
+        .thank-you-content h2 {
             margin-bottom: 1em;
             color: #ffa500;
         }
 
-        p {
+        .thank-you-content p {
             margin-bottom: 2em;
         }
 
-        .btn {
+        .thank-you-content .btn {
+            display: inline-block;
             text-decoration: none;
             padding: 0.75em 2em;
             background-color: #ffa500;
             color: #000;
             border-radius: 5px;
             transition: background-color 0.3s;
+            margin-top: 1em;
         }
 
-        .btn:hover {
+        .thank-you-content .btn:hover {
             background-color: #cc8400;
+        }
+
+        .smiley-face {
+            font-size: 3em;
+            color: #ffa500;
+            animation: bounce 2s infinite;
         }
 
         footer {
@@ -109,14 +116,15 @@
             width: 100%;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-30px); }
+            60% { transform: translateY(-15px); }
         }
     </style>
 </head>
@@ -125,42 +133,24 @@
         <nav>
             <div class="logo">Carso</div>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home">
-        <div class="home-content">
-            <h1>Welcome to Carso</h1>
-            <p>Discover the best prices for second-hand cars.</p>
-            <a href="/check" class="btn">Know Your Car Price</a>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="about-content">
-            <h2>About Carso</h2>
-            <p>Carso helps you find the best deals on second-hand cars. Our platform provides accurate price estimates based on various factors, ensuring you get the best value for your vehicle.</p>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="contact-content">
-            <h2>Contact Us</h2>
-            <p>Have questions or need support? Reach out to us!</p>
-            <a href="/contact-form" class="btn">Contact Us</a>
+    <section id="message">
+        <div class="thank-you-content">
+            <h2>Thank You!</h2>
+            <p>We have received your message and will get back to you soon.</p>
+            <div class="smiley-face">&#128512;</div> <!-- Unicode for smiley face -->
+            <a href="/" class="btn">Back to Home</a>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2024 Carso. All Rights Reserved.</p>
     </footer>
-
-    <script>
-        // Add any necessary JavaScript functionality if needed
-    </script>
 </body>
 </html>
