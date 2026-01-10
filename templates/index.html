@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>IPL Score Predictor</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 500px;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.8s ease;
+        }
+
+        h1 {
+            margin-bottom: 25px;
+            color: #1e3c72;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        label {
+            font-weight: 500;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: #ff512f;
+            box-shadow: 0 0 5px rgba(255, 81, 47, 0.5);
+        }
+
+        .overs-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .overs-container select {
+            width: 48%;
+        }
+
+        .button {
+            display: inline-block;
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ff512f, #dd2476);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(221, 36, 118, 0.45);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>IPL Batting Score Predictor 🏆</h1>
+
+        <form action="{{ url_for('predict') }}" method="post">
+
+            <label>Batting Team</label>
+            <select name="batting-team" required>
+                <option value="">Select Batting Team</option>
+                <option>Chennai Super Kings</option>
+                <option>Delhi Daredevils</option>
+                <option>Kings XI Punjab</option>
+                <option>Kolkata Knight Riders</option>
+                <option>Mumbai Indians</option>
+                <option>Rajasthan Royals</option>
+                <option>Royal Challengers Bangalore</option>
+                <option>Sunrisers Hyderabad</option>
+            </select>
+
+            <label>Bowling Team</label>
+            <select name="bowling-team" required>
+                <option value="">Select Bowling Team</option>
+                <option>Chennai Super Kings</option>
+                <option>Delhi Daredevils</option>
+                <option>Kings XI Punjab</option>
+                <option>Kolkata Knight Riders</option>
+                <option>Mumbai Indians</option>
+                <option>Rajasthan Royals</option>
+                <option>Royal Challengers Bangalore</option>
+                <option>Sunrisers Hyderabad</option>
+            </select>
+
+            <label>Venue</label>
+            <select name="venue" required>
+                <option value="">Select Venue</option>
+                <option>M Chinnaswamy Stadium</option>
+                <option>Eden Gardens</option>
+                <option>Feroz Shah Kotla</option>
+                <option>MA Chidambaram Stadium, Chepauk</option>
+                <option>Punjab Cricket Association Stadium, Mohali</option>
+                <option>Wankhede Stadium</option>
+                <option>Sawai Mansingh Stadium</option>
+                <option>Rajiv Gandhi International Stadium, Uppal</option>
+            </select>
+
+            <label>Overs Bowled</label>
+            <div class="overs-container">
+                <select name="overs_whole" required>
+                    <option value="">Overs</option>
+                    {% for i in range(5, 21) %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+                <select name="overs_balls" required>
+                    <option value="">Balls</option>
+                    {% for i in range(0, 7) %}
+                    <option>{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <label>Runs Scored</label>
+            <input type="number" name="runs" min="0" required>
+
+            <label>Wickets Fallen</label>
+            <input type="number" name="wickets" min="0" max="10" required>
+
+            <label>Runs in Previous 5 Overs</label>
+            <input type="number" name="runs_in_prev_5" min="0" required>
+
+            <label>Wickets in Previous 5 Overs</label>
+            <input type="number" name="wickets_in_prev_5" min="0" max="10" required>
+
+            <button type="submit" class="button">Predict Score</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

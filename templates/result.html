@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>IPL Score Result</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ipl-favicon.ico') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 500px;
+            padding: 40px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+            animation: slideUp 0.8s ease;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #1e3c72;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .score {
+            font-size: 48px;
+            font-weight: 700;
+            color: #ff512f;
+            margin: 15px 0 25px;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #ff512f, #dd2476);
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(221, 36, 118, 0.45);
+        }
+
+        .note {
+            font-size: 14px;
+            color: #777;
+            margin-top: 15px;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <h1>IPL Score Predictor 🏆</h1>
+
+        <p class="subtitle">Predicted Final Score Range</p>
+
+        <div class="score">
+            {{ lower_limit }} – {{ upper_limit }} runs
+        </div>
+
+        <a href="/" class="button">Predict Again</a>
+
+        <p class="note">*Based on current overs, runs, and wickets data</p>
+    </div>
+
+</body>
+
+</html>
