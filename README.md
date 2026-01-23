@@ -1,36 +1,32 @@
-# Car Price Predictor
+# 🚗 Car Price Predictor – Used Car Valuation Web App
 
-A machine learning application that predicts the selling price of a car based on various features such as brand, year, fuel type, transmission, and kilometers driven.
+A fast, production-ready **Flask web application** that predicts used car prices in real time.  
+Deployed on **Render.com** with **Gunicorn** for reliable serving.
 
-## Overview
-This project helps users estimate a fair price for a used car using historical car sales data and a trained machine learning model.
+## ✨ Live Demo
 
-## Model
-- Random Forest Regressor
-- Trained on real-world car price data
-- Model saved using pickle
-
-## Tech Stack
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Flask
-- HTML / CSS
+→ **[Car Price Predictor – Live on Render](https://olx5.onrender.com)**  
 
 ## Features
-- Car brand
-- Year of manufacture
-- Fuel type
-- Transmission
-- Kilometers driven
-- Number of owners
 
-## How to Run
-1. Clone the repository
-2. Install dependencies using `pip install -r requirements.txt`
-3. Run the application using `python app.py`
-4. Open `http://127.0.0.1:5000/` in your browser
+- Clean, responsive web interface (Flask + Bootstrap / plain HTML/CSS)
+- Predicts used car price based on:
+  - Brand / Make
+  - Model
+  - Year
+  - Kilometers driven
+  - Fuel type
+  - Transmission
+  - Owner type
+  - Mileage / Engine / Seats (if available in your model)
+- Instant prediction with clear output formatting
+- Production-grade deployment using Gunicorn on Render
 
-## Author
-Raj Patel
+## Tech Stack
+
+- **Backend**: Flask (lightweight Python web framework)
+- **Server**: Gunicorn (WSGI HTTP server for production)
+- **Model**: scikit-learn (e.g., Random Forest / XGBoost / Linear Regression)
+- **Data handling**: pandas, numpy
+- **Serialization**: joblib / pickle
+- **Deployment**: Render.com (free tier)
