@@ -20,7 +20,6 @@ A machine learning application that predicts the final score of an IPL cricket m
 **Key Highlights**
 - Random Forest & Lasso Regression
 - Hyperparameter tuning using GridSearchCV
-- Flask-based interactive UI
 
 ---
 
@@ -32,16 +31,3 @@ A machine learning application that predicts the final score of an IPL cricket m
 - Flask
 - HTML / CSS
 - Pickle
-
-## Repository Structure
-├── car-price-predictor/
-│ ├── app.py
-│ ├── model.pkl
-│ └── requirements.txt
-│
-├── ipl-score-predictor/
-│ ├── app.py
-│ ├── model.pkl
-│ └── requirements.txt
-│
-└── README.md
