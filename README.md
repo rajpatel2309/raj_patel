@@ -3,7 +3,7 @@
 A beautiful **Streamlit web application** that predicts the **final batting team score** in IPL matches using historical data and a trained **Lasso Regression model**.
 ## ✨ Live Demo
 
-→ **[IPL Score Predictor – Try it now!]([https://endtoendprojects-qndjqbqxa2phppnyfv8elc.streamlit.app/)**  
+→ **[IPL Score Predictor – Try it now!](https://endtoendprojects-qndjqbqxa2phppnyfv8elc.streamlit.app/)**  
 (Deployed on Streamlit Community Cloud – update this link after deployment)
 
 ## Features
