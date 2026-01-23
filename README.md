@@ -4,7 +4,7 @@ A beautiful **Streamlit web application** that predicts the **final batting team
 ## ✨ Live Demo
 
 → **[IPL Score Predictor – Try it now!](https://endtoendprojects-qndjqbqxa2phppnyfv8elc.streamlit.app/)**  
-(Deployed on Streamlit Community Cloud – update this link after deployment)
+(Deployed on Streamlit Community Cloud)
 
 ## Features
 
