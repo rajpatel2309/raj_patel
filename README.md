@@ -1,33 +1,27 @@
-# Machine Learning Projects
+# IPL Score Predictor 🏏 | Live Cricket Score Forecasting Web App
 
-This repository contains multiple end-to-end **Machine Learning projects** focused on real-world prediction problems. Each project includes data preprocessing, model training, and a Flask-based web application.
+A beautiful **Streamlit web application** that predicts the **final batting team score** in IPL matches using historical data and a trained **Lasso Regression model**.
+## ✨ Live Demo
 
-## Projects Included
+→ **[IPL Score Predictor – Try it now!]([https://endtoendprojects-qndjqbqxa2phppnyfv8elc.streamlit.app/)**  
+(Deployed on Streamlit Community Cloud – update this link after deployment)
 
-### 🚗 Car Price Predictor
-A machine learning application that predicts the selling price of a car based on important features such as brand, year, fuel type, transmission, kilometers driven, and number of owners.
+## Features
 
-**Key Highlights**
-- Random Forest Regressor
-- Trained on real-world car price data
-- Flask web application for user interaction
-
----
-
-### 🏏 IPL Score Predictor
-A machine learning application that predicts the final score of an IPL cricket match using current match conditions such as teams, overs, wickets, and recent run rate.
-
-**Key Highlights**
-- Random Forest & Lasso Regression
-- Hyperparameter tuning using GridSearchCV
-
----
+- Predict final score based on:
+  - Batting team
+  - Bowling team
+  - Venue
+  - Current runs & wickets
+  - Overs completed + balls in current over
+  - Runs & wickets in last 5 overs
+- Clean, mobile-friendly UI with emojis & real-time prediction
+- Input validation & helpful error messages
+- Model accuracy improved with feature engineering (overs, recent performance)
 
 ## Tech Stack
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Flask
-- HTML / CSS
-- Pickle
+
+- **Frontend**: Streamlit
+- **Model**: Lasso Regression (trained on historical IPL data)
+- **Libraries**: pandas, numpy, scikit-learn, pickle, joblib
+- **Deployment**: Streamlit Community Cloud (free tier)
