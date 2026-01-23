@@ -1,70 +1,107 @@
-# Import essential libraries
-from flask import Flask, render_template, request
+# ==============================
+# IPL Score Predictor - Streamlit
+# ==============================
+
+import streamlit as st
 import pickle
 import numpy as np
 
-# Load the Lasso Regression model
-filename = 'Batting-score-LassoReg-model.pkl'
+# Page config
+st.set_page_config(
+    page_title="IPL Score Predictor",
+    page_icon="🏏",
+    layout="centered"
+)
 
-# Fix for sklearn model version issues
-with open(filename, 'rb') as f:
+# Load model
+filename = "Batting-score-LassoReg-model.pkl"
+with open(filename, "rb") as f:
     regressor = pickle.load(f)
 
-app = Flask(__name__)
+# Title
+st.title("🏏 IPL Score Predictor")
+st.write("Predict the **final score** of an IPL match using Machine Learning")
 
-@app.route('/')
-def home():
-    return render_template('index.html')
+st.divider()
 
+# ------------------------------
+# Input Section
+# ------------------------------
 
-@app.route('/predict', methods=['POST'])
-def predict():
+teams = [
+    "Chennai Super Kings",
+    "Delhi Daredevils",
+    "Kings XI Punjab",
+    "Kolkata Knight Riders",
+    "Mumbai Indians",
+    "Rajasthan Royals",
+    "Royal Challengers Bangalore",
+    "Sunrisers Hyderabad"
+]
+
+venues = [
+    "M Chinnaswamy Stadium",
+    "Eden Gardens",
+    "Feroz Shah Kotla",
+    "MA Chidambaram Stadium, Chepauk",
+    "Punjab Cricket Association Stadium, Mohali",
+    "Wankhede Stadium",
+    "Sawai Mansingh Stadium",
+    "Rajiv Gandhi International Stadium, Uppal"
+]
+
+batting_team = st.selectbox("Batting Team", teams)
+bowling_team = st.selectbox("Bowling Team", teams)
+venue = st.selectbox("Venue", venues)
+
+st.divider()
+
+col1, col2 = st.columns(2)
+
+with col1:
+    overs_whole = st.number_input("Overs Completed", min_value=5, max_value=20, value=10)
+with col2:
+    overs_balls = st.number_input("Balls in Current Over", min_value=0, max_value=5, value=0)
+
+runs = st.number_input("Current Score", min_value=0, value=80)
+wickets = st.number_input("Wickets Fallen", min_value=0, max_value=10, value=3)
+runs_in_prev_5 = st.number_input("Runs in Last 5 Overs", min_value=0, value=40)
+wickets_in_prev_5 = st.number_input("Wickets in Last 5 Overs", min_value=0, max_value=10, value=2)
+
+# ------------------------------
+# Prediction
+# ------------------------------
+
+if st.button("Predict Score"):
     temp_array = []
 
-    if request.method == 'POST':
-        # Batting team one-hot encoding
-        batting_team = request.form['batting-team']
-        teams = ['Chennai Super Kings', 'Delhi Daredevils', 'Kings XI Punjab',
-                 'Kolkata Knight Riders', 'Mumbai Indians', 'Rajasthan Royals',
-                 'Royal Challengers Bangalore', 'Sunrisers Hyderabad']
-        temp_array += [1 if batting_team == team else 0 for team in teams]
+    # Batting team one-hot encoding
+    temp_array += [1 if batting_team == team else 0 for team in teams]
 
-        # Bowling team one-hot encoding
-        bowling_team = request.form['bowling-team']
-        temp_array += [1 if bowling_team == team else 0 for team in teams]
+    # Bowling team one-hot encoding
+    temp_array += [1 if bowling_team == team else 0 for team in teams]
 
-        # Venue one-hot encoding
-        venues = ['M Chinnaswamy Stadium', 'Eden Gardens', 'Feroz Shah Kotla',
-                  'MA Chidambaram Stadium, Chepauk', 'Punjab Cricket Association Stadium, Mohali',
-                  'Wankhede Stadium', 'Sawai Mansingh Stadium', 'Rajiv Gandhi International Stadium, Uppal']
-        venue = request.form['venue']
-        temp_array += [1 if venue == v else 0 for v in venues]
+    # Venue one-hot encoding
+    temp_array += [1 if venue == v else 0 for v in venues]
 
-        # Overs calculation: convert whole overs + balls to float
-        overs_whole = int(request.form['overs_whole'])
-        overs_balls = int(request.form['overs_balls'])
-        overs = overs_whole + overs_balls / 6
+    # Overs calculation
+    overs = overs_whole + overs_balls / 6
 
-        # Other numerical inputs
-        runs = int(request.form['runs'])
-        wickets = int(request.form['wickets'])
-        runs_in_prev_5 = int(request.form['runs_in_prev_5'])
-        wickets_in_prev_5 = int(request.form['wickets_in_prev_5'])
+    # Numerical features
+    temp_array += [
+        overs,
+        runs,
+        wickets,
+        runs_in_prev_5,
+        wickets_in_prev_5
+    ]
 
-        # Combine all features
-        temp_array += [overs, runs, wickets, runs_in_prev_5, wickets_in_prev_5]
+    # Convert to numpy array
+    data = np.array([temp_array])
 
-        # Convert to numpy array
-        data = np.array([temp_array])
+    # Prediction
+    prediction = int(regressor.predict(data)[0])
 
-        # Prediction
-        my_prediction = int(regressor.predict(data)[0])
-
-        # Return result
-        return render_template('result.html',
-                               lower_limit=my_prediction - 10,
-                               upper_limit=my_prediction + 5)
-
-
-if __name__ == '__main__':
-    app.run(host="0.0.0.0",port = 5500)
+    st.success(
+        f"🏏 **Predicted Final Score Range:** {prediction - 10}  to  {prediction + 5}"
+    )
